@@ -1,0 +1,69 @@
+@font-face {
+  font-family: 'zzzFont';
+  src: url('../../assets/fonts/Zzzfont-Regular.ttf');
+}
+html, body {
+	font-family: 'zzzFont', 'Open Sans', sans-serif;
+}
+.disabled {
+  pointer-events: none;
+  cursor: auto;
+}
+.hidden {
+	visibility: hidden;
+}
+#wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+   right: 0;
+   margin: 0 auto;
+	width: 1024px;
+	height: 100%;
+	background-image: repeating-linear-gradient(45deg, #56a34b, #56a34b 20px, #2e8c45 20px, #2e8c45 40px);
+	background-repeat: no-repeat;
+   overflow-x: hidden;
+}
+#backgroundImage {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+.monster {
+	position: absolute;
+	width: 53px;
+	height: 45px;
+	left: -53px;
+	top: 680px;
+	visibility: hidden;
+	&.active {
+		visibility: visible;
+		animation: move_right_an 3s linear 1;	
+		& .inner {
+			animation: monster_an 0.8s steps(5) 1;
+		}
+	}
+	
+	@keyframes move_right_an {
+		to {
+			transform: translateX(1000px);
+		}
+	}
+
+	& .inner {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-image: url('../images/monster.png');
+		background-size: 267px auto;		
+	}
+	@keyframes monster_an {
+		to {
+			background-position: -267px;
+		}
+	}
+}

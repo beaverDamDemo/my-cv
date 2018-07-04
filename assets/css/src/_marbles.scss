@@ -1,0 +1,14 @@
+.marble {
+	position: absolute;
+	top: -150px;
+	left: 400px;
+	width: 128px;
+	height: 128px;
+	background-image: url('../images/placeholder-image.png');
+	background-size: 128px auto;
+	border-radius: 50%;
+
+	&.marble__last {
+
+	}
+}
