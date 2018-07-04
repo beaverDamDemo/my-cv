@@ -5,7 +5,7 @@
 
   function init() {
     let s = Snap('#backgroundImage');
-    Snap.load('../assets/images/background-01.svg', onSVGLoaded);
+    Snap.load('background-01.svg', onSVGLoaded);
 
     function onSVGLoaded(data) {
       s.append(data);
