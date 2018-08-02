@@ -19,6 +19,7 @@ section {
   margin: 10px;
   flex-direction: row;
   min-width: 300px;
+  text-transform: uppercase;
 }
 section > .col-left > img {
   height: 144px;
@@ -71,6 +72,12 @@ section .col-right span {
   width: 50px;
   height: 50px;
   cursor: pointer;
+  transition: transform 0.2s;
+  &.hidden {
+    visibility: visible;
+    transform: scale(0);
+    transition: transform 0.2s;
+  }
   & .inner {
     position: relative;
     width: 32px;

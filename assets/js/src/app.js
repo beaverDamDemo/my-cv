@@ -5,11 +5,10 @@
 
   function init() {
     let s = Snap('#backgroundImage');
-    Snap.load('background-01.svg', onSVGLoaded);
+    Snap.load('assets/images/background-01.svg', onSVGLoaded);
 
     function onSVGLoaded(data) {
       s.append(data);
-
       animateBgr(data);
       animateMarbles();
     }
@@ -66,7 +65,7 @@
 
   function animateMarbles() {
     let marblesCount = $('.marble').length; 
-    Draggable.create( $('.marble'));
+    // Draggable.create( $('.marble'));
     let complete = 0;
 
     for( let i=0; i<marblesCount; i++) {
@@ -102,21 +101,24 @@
             scale: scale,
             left: "+=40px",
             top: "+=0px",
-            transformOrigin: '50% 65%',
-            onComplete: replaceImg
-          }
+            transformOrigin: '50% 65%'
+          },
+          onComplete: replaceImg
         })
 
         function replaceImg() {
-          setTimeout(()=>{
-            $('main').addClass('active');
-            $('.marble__last').addClass('hidden');
-            $('.closeButton').removeClass('hidden');
-            $('#fontBtn').removeClass('hidden');
-          }, (myDuration*1000))
-          
-
-
+          // setTimeout(()=>{
+            TweenMax.to('', 0, {
+              delay: myDuration*1,
+              onComplete: doActions
+            })
+            function doActions() {
+              $('main').addClass('active');
+              $('.marble__last').addClass('hidden');
+              $('.closeButton').removeClass('hidden');
+              $('#fontBtn').removeClass('hidden');
+            }
+          // }, (myDuration*1000))
         }
       } else {
         tl.to( $this, 1, {
@@ -124,10 +126,11 @@
           ease: Bounce.easeOut,
           delay: delay
         }, 0.25)
-        .to( $this, 1, {
+        .to( $this, 0.6, {
           left: "+=305px",
           rotation: "+=255",
-          ease: Power0.easeNone
+          ease: Power1.easeOut,
+          delay: 0.28
         })
         .to( $this, 0.2, {
           top: "+=105px",
@@ -181,28 +184,28 @@
       }
 
 
-  function loadAudio() {
-    let queue = new createjs.LoadQueue();
-    createjs.Sound.alternateExtensions = ["mp3"];
-    queue.installPlugin(createjs.Sound);
-    queue.on("complete", handleCompleteAudio);
-    queue.on('error', handleErrorAudio);
-    queue.loadFile({id:"introSound", src:instructions_audio });
-    queue.loadFile({id:"congratulationsSound", src:congratulations_audio });
-    queue.loadFile({id:"correct_audio", src:correct_audio });  
-  }
+  // function loadAudio() {
+  //   let queue = new createjs.LoadQueue();
+  //   createjs.Sound.alternateExtensions = ["mp3"];
+  //   queue.installPlugin(createjs.Sound);
+  //   queue.on("complete", handleCompleteAudio);
+  //   queue.on('error', handleErrorAudio);
+  //   queue.loadFile({id:"introSound", src:instructions_audio });
+  //   queue.loadFile({id:"congratulationsSound", src:congratulations_audio });
+  //   queue.loadFile({id:"correct_audio", src:correct_audio });  
+  // }
 
-  function handleCompleteAudio(e) {
+  // function handleCompleteAudio(e) {
 
-  }
+  // }
 
-  window.handleAudio = function(audioFile) {
-    createjs.Sound.play(audioFile);
-  };   
+  // window.handleAudio = function(audioFile) {
+  //   createjs.Sound.play(audioFile);
+  // };   
 
-  function handleErrorAudio(e) {
-    console.warn("Error handling audio: ", e);
-  }
+  // function handleErrorAudio(e) {
+  //   console.warn("Error handling audio: ", e);
+  // }
 
 })();
 

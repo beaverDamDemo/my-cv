@@ -1,29 +1,10 @@
-$('.closeButton').on('click', function(e) {
-	$('main').removeClass('active');
-	$('.monster').addClass('active');
-	$(this).addClass('hidden')
-	$('#fontBtn').addClass('hidden');
-})
-
-$('#fontBtn').on('click', function(e) {
-	e.preventDefault();
-	$('#fontBtn').addClass('hidden');
-	$('body').css({
-		'font-family': 'Open Sans, Arial, Helvetica'
-	})
-	$('#wrapper section').css({
-		'text-transform': 'none'
-	})
-	$('main').css({
-		'font-size' : '1.1em'
-	})
-})
-
 var ResizeToFullWindow = (function () {
   'use strict';
+
   var $wrapper = $('#wrapper');
 
   function resizeWrapper () {
+    console.log(' resizing')
     var width = window.innerWidth
       || document.documentElement.clientWidth
       || document.body.clientWidth;
@@ -34,6 +15,8 @@ var ResizeToFullWindow = (function () {
 
     width = $('body').width();
     height = $('body').height();
+    console.log('alt width, height: ', $('body').width(), ' ,', $('body').height() );
+
     // var ratioHeightWidth = width / 1024;
     var ratioHeightWidth = $('body').width() / 1024;
     // console.log('ratioHeightWidth', ratioHeightWidth);
@@ -41,6 +24,9 @@ var ResizeToFullWindow = (function () {
     // var ratioHeight = height / 768;
     var ratioHeight = $('body').height() / 768;
     // console.log('ratioHeight', ratioHeight);
+
+    console.log('ratioHeightWidth: ', ratioHeightWidth, 'ratioHeight: ', ratioHeight, 'width, height: ', width, ',', height)
+
     var ratioToUse = (ratioHeightWidth < ratioHeight) ? ratioHeightWidth:ratioHeight;
 
     var scaleRatioLabel;
@@ -63,6 +49,14 @@ var ResizeToFullWindow = (function () {
       '-ms-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
       'left' : '50%'
     });
+    // $($wrapper[0]).css({
+    //   'transform': 'scale(' + ratioToUse + ') translateX(0%)',
+    //   '-webkit-transform': 'scale(' + ratioToUse + ') translateX(0%)',
+    //   '-moz-transform': 'scale(' + ratioToUse + ') translateX(0%)',
+    //   '-o-transform': 'scale(' + ratioToUse + ') translateX(0%)',
+    //   '-ms-transform': 'scale(' + ratioToUse + ') translateX(0%)',
+    //   'left' : '0%'
+    // });
   };
   resizeWrapper();
 
@@ -89,7 +83,39 @@ var ResizeToFullWindow = (function () {
 
   window.addEventListener('resize', myEfficientFn);
 
+  function resetScale () {
+    console.log(" resetting scael")
+    var $_wrapper = $($wrapper[0]);
+
+    $_wrapper.css({
+      'transform': 'scale(' + 1 + ') translateX(-0%)',
+      '-webkit-transform': 'scale(' + 1 + ') translateX(-0%)',
+      '-moz-transform': 'scale(' + 1 + ') translateX(-0%)',
+      '-o-transform': 'scale(' + 1 + ') translateX(-0%)',
+      '-ms-transform': 'scale(' + 1 + ') translateX(-0%)',
+      'left' : '0%',
+      'transition' : 'all 0s linear'
+    });
+    // $_wrapper.css({
+    //   'transform': 'scale(' + 1 + ') translateX(-0%)',
+    //   '-webkit-transform': 'scale(' + 1 + ') translateX(-0%)',
+    //   '-moz-transform': 'scale(' + 1 + ') translateX(-0%)',
+    //   '-o-transform': 'scale(' + 1 + ') translateX(-0%)',
+    //   '-ms-transform': 'scale(' + 1 + ') translateX(-0%)',
+    //   'left' : '0%',
+    //   'transition' : 'all 0s linear'
+    // });    
+
+    setTimeout(function () {
+      $_wrapper.css({
+        'transition' : 'all 0s ease'
+      });
+    }, 350);
+  };
+
   return {
-    scale: resizeWrapper
+    scale: resizeWrapper,
+    resetScale : resetScale
   }
+
 })();
