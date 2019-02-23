@@ -4,6 +4,7 @@ $('.closeButton').on('click', function(e) {
 	$(this).addClass('hidden')
 	$('#fontBtn').addClass('hidden');
 	setTimeout(function() {
+		$('.monster').removeClass('active');
 		$('.replay-envelope').addClass('active')
 		resetMarbles()
 	}, 3300)

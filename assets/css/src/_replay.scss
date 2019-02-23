@@ -8,7 +8,7 @@
 	background: cornflowerblue;
 	text-align: center;
 	transform: scale(0);
-	transition: transform 0.12s;
+	transition: transform 0.18s;
 	&.active {
 		transform: scale(1);
 	}

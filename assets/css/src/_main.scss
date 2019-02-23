@@ -80,6 +80,13 @@ section .col-right span {
     background: red;
   }
 }
+table {
+  margin: 5px 3px;
+  border-collapse: collapse;
+}
+table td, table th {
+  border: 1px solid navy;
+}
 section:nth-child(2) .col.col-left {
   & img {
     width: 75%;
