@@ -6,6 +6,8 @@
 
     function onSVGLoaded(data) {
       s.append(data);
+      $('#loader').removeClass('active')
+      $('#wrapper').removeClass('overlayed')
       animateBgr(data);
       animateMarbles();
     }
