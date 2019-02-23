@@ -3,6 +3,10 @@ $('.closeButton').on('click', function(e) {
 	$('.monster').addClass('active');
 	$(this).addClass('hidden')
 	$('#fontBtn').addClass('hidden');
+	setTimeout(function() {
+		$('.replay-envelope').addClass('active')
+		resetMarbles()
+	}, 3300)
 })
 
 $('#fontBtn').on('click', function(e) {
@@ -19,77 +23,76 @@ $('#fontBtn').on('click', function(e) {
 	})
 })
 
-var ResizeToFullWindow = (function () {
-  'use strict';
-  var $wrapper = $('#wrapper');
+$('#replay-button').on('click', function() {
+	$('.replay-envelope').removeClass('active')
+	animateMarbles()
+})
 
-  function resizeWrapper () {
-    var width = window.innerWidth
-      || document.documentElement.clientWidth
-      || document.body.clientWidth;
+// var ResizeToFullWindow = (function () {
+//   'use strict';
+//   var $wrapper = $('#wrapper');
 
-      var height = window.innerHeight
-      || document.documentElement.clientHeight
-      || document.body.clientHeight;
+//   function resizeWrapper () {
+//     var width = window.innerWidth
+//       || document.documentElement.clientWidth
+//       || document.body.clientWidth;
 
-    width = $('body').width();
-    height = $('body').height();
-    // var ratioHeightWidth = width / 1024;
-    var ratioHeightWidth = $('body').width() / 1024;
-    // console.log('ratioHeightWidth', ratioHeightWidth);
+//       var height = window.innerHeight
+//       || document.documentElement.clientHeight
+//       || document.body.clientHeight;
 
-    // var ratioHeight = height / 768;
-    var ratioHeight = $('body').height() / 768;
-    // console.log('ratioHeight', ratioHeight);
-    var ratioToUse = (ratioHeightWidth < ratioHeight) ? ratioHeightWidth:ratioHeight;
+//     width = $('body').width();
+//     height = $('body').height();
+//     var ratioHeightWidth = $('body').width() / 1024;
+//     var ratioHeight = $('body').height() / 768;
+//     var ratioToUse = (ratioHeightWidth < ratioHeight) ? ratioHeightWidth:ratioHeight;
 
-    var scaleRatioLabel;
-    if(ratioHeightWidth < ratioHeight) {
-      scaleRatioLabel = 'w';
-    }
-    else {
-      scaleRatioLabel = 'h';
-    }
+//     var scaleRatioLabel;
+//     if(ratioHeightWidth < ratioHeight) {
+//       scaleRatioLabel = 'w';
+//     }
+//     else {
+//       scaleRatioLabel = 'h';
+//     }
 
-    window.scaleRatio = ratioToUse;
-    window.scaleRatioLabel = scaleRatioLabel;
+//     window.scaleRatio = ratioToUse;
+//     window.scaleRatioLabel = scaleRatioLabel;
 
+//     $($wrapper[0]).css({
+//       'transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+//       '-webkit-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+//       '-moz-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+//       '-o-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+//       '-ms-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+//       'left' : '50%'
+//     });
+//   };
+//   resizeWrapper();
 
-    $($wrapper[0]).css({
-      'transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-      '-webkit-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-      '-moz-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-      '-o-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-      '-ms-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-      'left' : '50%'
-    });
-  };
-  resizeWrapper();
-
-  function debounce(func, wait, immediate) {
-    var timeout;
-    return function() {
-      var context = this, args = arguments;
-      var later = function() {
-        timeout = null;
-        if (!immediate) func.apply(context, args);
-      };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
-    };
-  };
+//   function debounce(func, wait, immediate) {
+//     var timeout;
+//     return function() {
+//       var context = this, args = arguments;
+//       var later = function() {
+//         timeout = null;
+//         if (!immediate) func.apply(context, args);
+//       };
+//       var callNow = immediate && !timeout;
+//       clearTimeout(timeout);
+//       timeout = setTimeout(later, wait);
+//       if (callNow) func.apply(context, args);
+//     };
+//   };
 
 
-  var myEfficientFn = debounce(function() {
-    // console.log('debaunce');
-    resizeWrapper();
-  }, 50);
+//   var myEfficientFn = debounce(function() {
+//     // console.log('debaunce');
+//     resizeWrapper();
+//   }, 50);
 
-  window.addEventListener('resize', myEfficientFn);
+//   window.addEventListener('resize', myEfficientFn);
 
-  return {
-    scale: resizeWrapper
-  }
-})();
+//   return {
+//     scale: resizeWrapper
+//   }
+// })();
