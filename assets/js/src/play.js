@@ -28,71 +28,72 @@ $('#replay-button').on('click', function() {
 	animateMarbles()
 })
 
-// var ResizeToFullWindow = (function () {
-//   'use strict';
-//   var $wrapper = $('#wrapper');
+var ResizeToFullWindow = (function () {
+  'use strict';
+  var $wrapper = $('#wrapper');
 
-//   function resizeWrapper () {
-//     var width = window.innerWidth
-//       || document.documentElement.clientWidth
-//       || document.body.clientWidth;
+  function resizeWrapper () {
+    var width = window.innerWidth
+      || document.documentElement.clientWidth
+      || document.body.clientWidth;
 
-//       var height = window.innerHeight
-//       || document.documentElement.clientHeight
-//       || document.body.clientHeight;
+      var height = window.innerHeight
+      || document.documentElement.clientHeight
+      || document.body.clientHeight;
 
-//     width = $('body').width();
-//     height = $('body').height();
-//     var ratioHeightWidth = $('body').width() / 1024;
-//     var ratioHeight = $('body').height() / 768;
-//     var ratioToUse = (ratioHeightWidth < ratioHeight) ? ratioHeightWidth:ratioHeight;
+    width = $('body').width();
+    height = $('body').height();
+    var ratioHeightWidth = $('body').width() / 1024;
+    var ratioHeight = $('body').height() / 768;
+    var ratioToUse = (ratioHeightWidth < ratioHeight) ? ratioHeightWidth:ratioHeight;
 
-//     var scaleRatioLabel;
-//     if(ratioHeightWidth < ratioHeight) {
-//       scaleRatioLabel = 'w';
-//     }
-//     else {
-//       scaleRatioLabel = 'h';
-//     }
+    var scaleRatioLabel;
+    if(ratioHeightWidth < ratioHeight) {
+      scaleRatioLabel = 'w';
+    }
+    else {
+      scaleRatioLabel = 'h';
+    }
 
-//     window.scaleRatio = ratioToUse;
-//     window.scaleRatioLabel = scaleRatioLabel;
+    window.scaleRatio = ratioToUse;
+    window.scaleRatioLabel = scaleRatioLabel;
 
-//     $($wrapper[0]).css({
-//       'transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-//       '-webkit-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-//       '-moz-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-//       '-o-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-//       '-ms-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-//       'left' : '50%'
-//     });
-//   };
-//   resizeWrapper();
+    $($wrapper[0]).css({
+      'transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+      '-webkit-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+      '-moz-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+      '-o-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+      '-ms-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+      'left' : '50%',
+      'height': (100/ratioToUse)+'vh'
+    });
+  };
+  resizeWrapper();
 
-//   function debounce(func, wait, immediate) {
-//     var timeout;
-//     return function() {
-//       var context = this, args = arguments;
-//       var later = function() {
-//         timeout = null;
-//         if (!immediate) func.apply(context, args);
-//       };
-//       var callNow = immediate && !timeout;
-//       clearTimeout(timeout);
-//       timeout = setTimeout(later, wait);
-//       if (callNow) func.apply(context, args);
-//     };
-//   };
+  function debounce(func, wait, immediate) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  };
 
 
-//   var myEfficientFn = debounce(function() {
-//     // console.log('debaunce');
-//     resizeWrapper();
-//   }, 50);
+  var myEfficientFn = debounce(function() {
+    // console.log('debaunce');
+    resizeWrapper();
+  }, 50);
 
-//   window.addEventListener('resize', myEfficientFn);
+  window.addEventListener('resize', myEfficientFn);
 
-//   return {
-//     scale: resizeWrapper
-//   }
-// })();
+  return {
+    scale: resizeWrapper
+  }
+})();
