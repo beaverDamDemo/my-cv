@@ -34,40 +34,40 @@ var ResizeToFullWindow = (function () {
   var $wrapper = $('#wrapper');
 
   function resizeWrapper () {
-    var width = window.innerWidth
-      || document.documentElement.clientWidth
-      || document.body.clientWidth;
+    // var width = window.innerWidth
+    //   || document.documentElement.clientWidth
+    //   || document.body.clientWidth;
 
-      var height = window.innerHeight
-      || document.documentElement.clientHeight
-      || document.body.clientHeight;
+    //   var height = window.innerHeight
+    //   || document.documentElement.clientHeight
+    //   || document.body.clientHeight;
 
-    width = $('body').width();
-    height = $('body').height();
-    var ratioHeightWidth = $('body').width() / 1024;
-    var ratioHeight = $('body').height() / 768;
-    var ratioToUse = (ratioHeightWidth < ratioHeight) ? ratioHeightWidth:ratioHeight;
+    // width = $('body').width();
+    // height = $('body').height();
+    // var ratioHeightWidth = $('body').width() / 1024;
+    // var ratioHeight = $('body').height() / 768;
+    // var ratioToUse = (ratioHeightWidth < ratioHeight) ? ratioHeightWidth:ratioHeight;
 
-    var scaleRatioLabel;
-    if(ratioHeightWidth < ratioHeight) {
-      scaleRatioLabel = 'w';
-    }
-    else {
-      scaleRatioLabel = 'h';
-    }
+    // var scaleRatioLabel;
+    // if(ratioHeightWidth < ratioHeight) {
+    //   scaleRatioLabel = 'w';
+    // }
+    // else {
+    //   scaleRatioLabel = 'h';
+    // }
 
-    window.scaleRatio = ratioToUse;
-    window.scaleRatioLabel = scaleRatioLabel;
+    // window.scaleRatio = ratioToUse;
+    // window.scaleRatioLabel = scaleRatioLabel;
 
-    $($wrapper[0]).css({
-      'transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-      '-webkit-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-      '-moz-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-      '-o-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-      '-ms-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
-      'left' : '50%',
-      'height': (100/ratioToUse)+'vh'
-    });
+    // $($wrapper[0]).css({
+    //   'transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+    //   '-webkit-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+    //   '-moz-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+    //   '-o-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+    //   '-ms-transform': 'scale(' + ratioToUse + ') translateX(-50%)',
+    //   'left' : '50%',
+    //   'height': (100/ratioToUse)+'vh'
+    // });
   };
   resizeWrapper();
 
