@@ -14,8 +14,12 @@ $('#fontBtn').on('click', function(e) {
 	e.preventDefault();
 	$('#fontBtn').addClass('hidden');
 	$('body').css({
-		'font-family': 'Open Sans, Arial, Helvetica'
+		'font-family': 'Open Sans, Arial, Helvetica',
+    'font-size': '23px'
 	})
+  $('body table').css({
+    'font-size': '0.7em'
+  })
 	$('#wrapper section').css({
 		'text-transform': 'none'
 	})
@@ -87,12 +91,11 @@ var ResizeToFullWindow = (function () {
   };
 
 
-  var myEfficientFn = debounce(function() {
-    // console.log('debaunce');
-    resizeWrapper();
-  }, 50);
+  // var myEfficientFn = debounce(function() {
+  //   resizeWrapper();
+  // }, 50);
 
-  window.addEventListener('resize', myEfficientFn);
+  // window.addEventListener('resize', myEfficientFn);
 
   return {
     scale: resizeWrapper

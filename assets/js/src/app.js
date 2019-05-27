@@ -20,7 +20,7 @@
       ];
       let duration = 16000;
 
-      Snap.select('rect#bgr').animate({ 
+      Snap.select('rect#bgr').animate({
         fill: "#333"
       }, duration);
       Snap.select('#kandelaber #light').animate({
@@ -43,14 +43,14 @@
       }, duration);
 
       setTimeout(()=>{
-        timeout();  
+        timeout();
       }, 2*duration)
-      
+
       function timeout() {
         setTimeout(function () {
-            Snap.select('rect#bgr').animate({ 
+            Snap.select('rect#bgr').animate({
               fill: "#333"
-            }, duration);      
+            }, duration);
             setTimeout(()=>{
               Snap.select('rect#bgr').animate({
                 fill: origColor
@@ -60,7 +60,7 @@
         }, 2*duration);
       }
     }
- 
+
   window.resetMarbles = function() {
     let marblesCount = $('.marble').length;
     let complete = 0;
@@ -77,7 +77,7 @@
         left: "400px",
         top: "-150px"
       })
-    }    
+    }
   }
   window.animateMarbles = function() {
     let marblesCount = $('.marble').length;
@@ -103,11 +103,11 @@
         .to( $this, 1, {
           css: {
             borderRadius: 0,
-            height: '128px',
+            height: '136px',
             backgroundRepeat: "no-repeat",
             scale: scale,
-            left: "+=40px",
-            top: "337px",
+            left: "+=34px",
+            top: "372px",
             transformOrigin: '50% 50%'
           },
           onComplete: replaceImg
@@ -120,7 +120,8 @@
             // })
             // function doActions() {
               $('main').addClass('active');
-              $('.marble__last').addClass('hidden');
+              // $('.marble__last').addClass('hidden');
+              $('.marble__last').addClass('last-marble-hiding');
               $('.closeButton').removeClass('hidden');
               $('#fontBtn').removeClass('hidden');
             // }
@@ -147,7 +148,7 @@
             opacity: 0,
             left: "+=4px"
           }
-        })        
+        })
       }
     }
   }

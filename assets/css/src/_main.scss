@@ -1,18 +1,21 @@
 main {
   position: absolute;
+  width: 842px;
   left: 0;
   right: 0;
   margin: 0 auto;
   margin-bottom: 20px;
   top: 20px;
   top: 20px;
-  font-size: 1.6em;
-  width: 798px;
-  height: auto;
+  font-size: 25px;
   background: #d6d6d6;
   visibility: hidden;
+  max-height: 128px;
+  overflow: hidden;
   &.active {
     visibility: visible;
+    max-height: 100%;
+    transition: max-height 1s;
   }
 }
 section {
@@ -42,6 +45,7 @@ section .col-right span {
   margin-left: 2%;
   width: 68%;
   padding-left: 12px;
+  overflow-x: hidden;
   & ul li {
     list-style-type: square;
     list-style-position: inside;
@@ -83,6 +87,7 @@ section .col-right span {
 table {
   margin: 5px 3px;
   border-collapse: collapse;
+  font-size: 0.8em;
 }
 table td, table th {
   border: 1px solid navy;
@@ -116,7 +121,7 @@ section:nth-child(2) .col.col-left {
     transform: translate(-50%, -50%);
     background-image: url('../images/close-button-png-30237.png');
     background-size: 48px 48px;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     animation: filter_an 9s infinite;
 
     @keyframes filter_an {

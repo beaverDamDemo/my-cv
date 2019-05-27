@@ -1,7 +1,7 @@
 #marblesWrapper {
 	position: absolute;
-	left:0;
-	top: 20px;
+	left: 6px;
+	top: 0px;
 	width: 100%;
 	height: 100%;
 }
@@ -9,9 +9,14 @@
 	position: absolute;
 	top: -150px;
 	left: 400px;
-	width: 128px;
-	height: 128px;
+	width: 134px;
+	height: 134px;
+	width: 134px;
 	background-image: url('../images/static-image.png');
-	background-size: 128px auto;
+	background-size: 134px auto;
 	border-radius: 50%;
+	&.last-marble-hiding {
+		opacity: 0;
+		transition: opacity 0.1s 0.3s;
+	}
 }

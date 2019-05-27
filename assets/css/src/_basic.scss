@@ -4,13 +4,13 @@
 }
 html, body {
 	font-family: 'zzzFont', 'Open Sans', sans-serif;
-	width: 100%;
-	height: 100%;
+	// width: 100%;
+	// height: 100%;
 }
 body {
 	margin: 0;
 	padding: 0;
-	height: 100%;
+	// height: 100%;
 }
 .disabled {
   pointer-events: none;
@@ -24,8 +24,7 @@ body {
 	top: 0;
 	left: 0;
 	width: 1024px;
-	// height: 768px;
-	height: 100vh;
+	height: 2880px;
 	background-image: repeating-linear-gradient(45deg, #56a34b, #56a34b 20px, #2e8c45 20px, #2e8c45 40px);
 	background-repeat: no-repeat;
    overflow-x: hidden;
@@ -51,12 +50,12 @@ body {
 	visibility: hidden;
 	&.active {
 		visibility: visible;
-		animation: move_right_an 6s linear 1;	
+		animation: move_right_an 6s linear 1;
 		& .inner {
 			animation: monster_an 0.8s steps(5) 8;
 		}
 	}
-	
+
 	@keyframes move_right_an {
 		to {
 			transform: translateX(2000px);
