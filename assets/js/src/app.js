@@ -1,7 +1,7 @@
 ( function() {
   "use strict";
 
-    let s = Snap('#backgroundImage');
+    const s = Snap('#backgroundImage');
     Snap.load('assets/images/background-01.svg', onSVGLoaded);
 
     function onSVGLoaded(data) {
@@ -13,12 +13,12 @@
     }
 
     function animateBgr(data) {
-      let origColor = Snap.select('rect#bgr').attr('fill');
-      let origLightColor = [
+      const origColor = Snap.select('rect#bgr').attr('fill');
+      const origLightColor = [
         Snap.select('#kandelaber #light').attr('fill'),
         Snap.select('#kandelaber #light-2').attr('fill')
       ];
-      let duration = 9000;
+      const duration = 9000;
 
       Snap.select('rect#bgr').animate({
         fill: "#333"
@@ -62,7 +62,7 @@
     }
 
   window.resetMarbles = function() {
-    let marblesCount = $('.marble').length;
+    const marblesCount = $('.marble').length;
     let complete = 0;
 
     for( let i=0; i<marblesCount; i++) {
@@ -80,7 +80,7 @@
     }
   }
   window.animateMarbles = function() {
-    let marblesCount = $('.marble').length;
+    const marblesCount = $('.marble').length;
     let complete = 0;
 
     for( let i=0; i<marblesCount; i++) {
@@ -94,37 +94,36 @@
 
       if( index == $('.marble').length-1 ) {
         let scale = 6.25;
-
+        /* the last marble*/
         tl.to( $this, 1, {
           top: "+=652px",
           ease: Bounce.easeOut,
           delay: delay
         }, 0.2)
-        .to( $this, 1, {
+        .to( $this, 2, {
           css: {
             borderRadius: 0,
             height: '136px',
             backgroundRepeat: "no-repeat",
             scale: scale,
-            left: "+=34px",
             top: "372px",
+            left: "+=10%",
             transformOrigin: '50% 50%'
           },
           onComplete: replaceImg
         })
 
         function replaceImg() {
-            // TweenMax.to('', 0, {
-            //   delay: 0,
-            //   onComplete: doActions
-            // })
-            // function doActions() {
-              $('main').addClass('active');
-              // $('.marble__last').addClass('hidden');
-              $('.marble__last').addClass('last-marble-hiding');
-              $('.closeButton').removeClass('hidden');
-              $('#fontBtn').removeClass('hidden');
-            // }
+          /* being replaced eventually by a DIV */
+          /* todo: marble ni na sredini, zato kadar se scale-a in animira border-radius etc ..
+          se ne postavi na pravilno left pozicijo. Treba bi z js preverit, koliko prostora ima
+          last marble na voljo za se povecat, in potem na podlagi tega preracunat
+          koliko naj se skalira in koliko naj se premakne left, top */
+            $('main').addClass('active');
+            $('.marble__last').addClass('last-marble-hiding');
+            $('.closeButton').removeClass('hidden');
+            $('#fontBtn').removeClass('hidden');
+          // }
         }
       } else {
         tl.to( $this, 1, {

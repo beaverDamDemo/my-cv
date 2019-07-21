@@ -23,10 +23,10 @@ body {
 	height: 2880px;
 	background-image: repeating-linear-gradient(45deg, #56a34b, #56a34b 20px, #2e8c45 20px, #2e8c45 40px);
 	background-repeat: no-repeat;
-  overflow-x: hidden;
+  overflow-x: scroll;
   left: 50%;
   transform: translateX(-50%);
-  transform-origin: center top;
+  transform-origin: left top;
 
   // left: 0;
   // right: 0;
@@ -76,4 +76,23 @@ body {
 			background-position: -267px;
 		}
 	}
+}
+
+#fontBtn {
+  position: absolute;
+  right: 5px;
+  top: 100px;
+  padding: 25px 12px 8px 12px;
+  background-color: dodgerblue;
+  background-image: url('../images/font.png');
+  background-repeat: no-repeat;
+  background-position: 50% 16%;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background-color: gold;
+    border-radius: 30px;
+  }
 }
