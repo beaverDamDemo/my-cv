@@ -17,17 +17,16 @@ body {
 	visibility: hidden;
 }
 #wrapper {
-	// position: absolute;
-	// top: 0;
-	// width: 1024px;
-	// height: 2880px;
-	// background-image: repeating-linear-gradient(45deg, #56a34b, #56a34b 20px, #2e8c45 20px, #2e8c45 40px);
-	// background-repeat: no-repeat;
- //  overflow-x: hidden;
- //  left: 50%;
- //  transform: translateX(-50%);
- //  transform-origin: 0 0;
- //  background-size: contain;
+	position: absolute;
+	top: 0;
+	width: 1024px;
+	height: 2880px;
+	background-image: repeating-linear-gradient(45deg, #56a34b, #56a34b 20px, #2e8c45 20px, #2e8c45 40px);
+	background-repeat: no-repeat;
+  overflow-x: hidden;
+  left: 50%;
+  transform: translateX(-50%);
+  // transform-origin: 0 0;
 }
 
 #backgroundImage {
