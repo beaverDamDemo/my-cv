@@ -1,15 +1,15 @@
 ( function() {
   "use strict";
 
-    let s = Snap('#backgroundImage');
-    Snap.load('assets/images/background-01.svg', onSVGLoaded);
+    // let s = Snap('#backgroundImage');
+    // Snap.load('assets/images/background-01.svg', onSVGLoaded);
 
     function onSVGLoaded(data) {
       s.append(data);
       $('#loader').removeClass('active')
       $('#wrapper').removeClass('overlayed')
       animateBgr(data);
-      animateMarbles();
+      // animateMarbles();
     }
 
     function animateBgr(data) {
@@ -18,7 +18,7 @@
         Snap.select('#kandelaber #light').attr('fill'),
         Snap.select('#kandelaber #light-2').attr('fill')
       ];
-      let duration = 16000;
+      let duration = 9000;
 
       Snap.select('rect#bgr').animate({
         fill: "#333"
