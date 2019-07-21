@@ -1,15 +1,15 @@
 ( function() {
   "use strict";
 
-    // let s = Snap('#backgroundImage');
-    // Snap.load('assets/images/background-01.svg', onSVGLoaded);
+    let s = Snap('#backgroundImage');
+    Snap.load('assets/images/background-01.svg', onSVGLoaded);
 
     function onSVGLoaded(data) {
       s.append(data);
       $('#loader').removeClass('active')
       $('#wrapper').removeClass('overlayed')
       animateBgr(data);
-      // animateMarbles();
+      animateMarbles();
     }
 
     function animateBgr(data) {
