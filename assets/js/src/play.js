@@ -2,7 +2,7 @@ $('.closeButton').on('click', function(e) {
 	$('main').removeClass('active');
 	$('.monster').addClass('active');
 	$(this).addClass('hidden')
-	$('#fontBtn').addClass('hidden');
+	$('#fontBtn').removeClass('active');
 	setTimeout(function() {
 		$('.monster').removeClass('active');
 		$('.replay-envelope').addClass('active')

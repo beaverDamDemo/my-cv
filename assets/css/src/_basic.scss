@@ -92,7 +92,7 @@ body {
     right: 5px;
     top: 100px;
     padding: 25px 12px 8px 12px;
-    background-color: dodgerblue;
+    background-color: #1E90FF;
     background-image: url('../images/font.png');
     background-repeat: no-repeat;
     background-position: 50% 16%;
@@ -109,8 +109,7 @@ body {
     }
 
     &:hover {
-        background-color: gold;
-        border-radius: 30px;
+        background-color: #3EB0FF;
     }
 
     @keyframes slide-in-elliptic-top-fwd {

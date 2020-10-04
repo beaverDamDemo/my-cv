@@ -135,4 +135,7 @@ section:nth-child(2) .col.col-left {
       }
     }
   }
+  &:hover {
+    filter: contrast(115%) brightness(115%);
+  }
 }
