@@ -1,6 +1,5 @@
 ( function() {
   "use strict";
-
     const s = Snap('#backgroundImage');
     Snap.load('assets/images/background-01.svg', onSVGLoaded);
 
@@ -122,7 +121,7 @@
             $('main').addClass('active');
             $('.marble__last').addClass('last-marble-hiding');
             $('.closeButton').removeClass('hidden');
-            $('#fontBtn').removeClass('hidden');
+            $('#fontBtn').addClass('active');
           // }
         }
       } else {
