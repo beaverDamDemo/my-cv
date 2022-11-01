@@ -95,9 +95,12 @@ table td, table th {
 }
 section:nth-child(2) .col.col-left {
   & img {
-    width: 75%;
-    height: 75%;
-    margin-top: 12.5%;
+    width: 180px;
+    height: 235px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 .closeButton {
