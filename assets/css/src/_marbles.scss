@@ -11,12 +11,11 @@
 	left: 400px;
 	width: 134px;
 	height: 134px;
-	width: 134px;
 	background-image: url('../images/static-image.png');
 	background-size: 134px auto;
 	border-radius: 50%;
 	&.last-marble-hiding {
-		opacity: 0;
+		opacity: 1;
 		transition: opacity 0.1s 0.3s;
 	}
 }
