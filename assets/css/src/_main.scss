@@ -3,7 +3,7 @@ main {
   width: 837px;
   margin-bottom: 20px;
   top: 15px;
-  font-size: 25px;
+  font-size: 22px;
   background: #d6d6d6;
   visibility: hidden;
   max-height: 128px;
@@ -22,6 +22,10 @@ section {
   flex-direction: row;
   min-width: 300px;
   text-transform: uppercase;
+  & p, & h3, & ul {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+  }
 }
 section > .col-left > img {
   height: 144px;
@@ -35,7 +39,7 @@ section .col-right span {
 .col-left {
   width: 30%;
   text-align: right;
-  font-size: 0.75em;
+  font-size: 0.875em;
   color: navy;
   padding-right: 12px;
 }
