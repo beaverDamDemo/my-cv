@@ -32,5 +32,6 @@ $("#fontBtn").on("click", function (e) {
 
 $("#replay-button").on("click", function () {
   $(".replay-envelope").removeClass("active");
+  $("#marblesWrapper").removeClass("hidden");
   animateMarbles();
 });
