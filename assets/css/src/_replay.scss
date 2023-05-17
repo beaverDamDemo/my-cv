@@ -15,6 +15,9 @@
 	&.active {
 		transform: scale(1);
 	}
+	div:nth-child(3) {
+		margin-top: 144px;
+	}
 
 	button#replay-button {
 		border: none;
