@@ -1,5 +1,5 @@
 # use Koala to convert the three scripts into .min.js
-
+maybe you can work without Koala and use non min.js files , dont forget about scss
 # use Koala for scss to
 
 # to run php -S localhost:4200
