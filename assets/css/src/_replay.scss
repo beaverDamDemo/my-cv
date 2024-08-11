@@ -12,9 +12,11 @@
 	text-align: center;
 	transform: scale(0);
 	transition: transform 0.18s;
+
 	&.active {
 		transform: scale(1);
 	}
+
 	div:nth-child(3) {
 		margin-top: 144px;
 	}
@@ -26,10 +28,10 @@
 		background: url('../images/10ce78a56be64c4cd48b444279ebb6fa.svg');
 		margin-top: 60px;
 		cursor: pointer;
-		&:hover {
 
-		}
+		&:hover {}
 	}
+
 	& div {
 		margin-top: 20px;
 	}

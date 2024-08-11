@@ -27,13 +27,11 @@ body {
   top: 0;
   width: 1024px;
   height: 1789px;
-  background-image: repeating-linear-gradient(
-    45deg,
-    #56a34b,
-    #56a34b 20px,
-    #2e8c45 20px,
-    #2e8c45 40px
-  );
+  background-image: repeating-linear-gradient(45deg,
+      #56a34b,
+      #56a34b 20px,
+      #2e8c45 20px,
+      #2e8c45 40px);
   background-repeat: no-repeat;
   overflow-x: scroll;
   left: 50%;
@@ -105,8 +103,7 @@ body {
   opacity: 0;
 
   &.active {
-    animation: slide-in-elliptic-top-fwd 0.7s
-      cubic-bezier(0.25, 0.46, 0.45, 0.94) both 1.5s;
+    animation: slide-in-elliptic-top-fwd 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) both 1.5s;
   }
 
   &:hover {

@@ -1,37 +1,37 @@
-$(".closeButton").on("click", function (e) {
-  $("main").removeClass("active");
-  $(".monster").addClass("active");
-  $(this).addClass("hidden");
-  $("#fontBtn").removeClass("active");
-  $("#marblesWrapper").addClass("hidden");
+$('.closeButton').on('click', function (e) {
+  $('main').removeClass('active');
+  $('.monster').addClass('active');
+  $(this).addClass('hidden');
+  $('#fontBtn').removeClass('active');
+  $('#marblesWrapper').addClass('hidden');
 
   setTimeout(function () {
-    $(".monster").removeClass("active");
-    $(".replay-envelope").addClass("active");
+    $('.monster').removeClass('active');
+    $('.replay-envelope').addClass('active');
     resetMarbles();
   }, 3300);
 });
 
-$("#fontBtn").on("click", function (e) {
+$('#fontBtn').on('click', function (e) {
   e.preventDefault();
-  $("#fontBtn").addClass("hidden");
-  $("body").css({
-    "font-family": "Open Sans, Arial, Helvetica",
-    "font-size": "23px",
+  $('#fontBtn').addClass('hidden');
+  $('body').css({
+    'font-family': 'Open Sans, Arial, Helvetica',
+    'font-size': '23px',
   });
-  $("body table").css({
-    "font-size": "0.7em",
+  $('body table').css({
+    'font-size': '0.7em',
   });
-  $("#wrapper section").css({
-    "text-transform": "none",
+  $('#wrapper section').css({
+    'text-transform': 'none',
   });
-  $("main").css({
-    "font-size": "1.1em",
+  $('main').css({
+    'font-size': '1.1em',
   });
 });
 
-$("#replay-button").on("click", function () {
-  $(".replay-envelope").removeClass("active");
-  $("#marblesWrapper").removeClass("hidden");
+$('#replay-button').on('click', function () {
+  $('.replay-envelope').removeClass('active');
+  $('#marblesWrapper').removeClass('hidden');
   animateMarbles();
 });
