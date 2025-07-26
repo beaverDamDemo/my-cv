@@ -1,0 +1,25 @@
+{
+  "name": "my-cv",
+  "version": "1.0.0",
+  "description": "- to update you ll have to manually update the html and take screenshots and paste these screenshots into a single file\r   or just zoom out and take only one screenshot to speed up",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -p 4200",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beaverDamDemo/my-cv.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/beaverDamDemo/my-cv/issues"
+  },
+  "homepage": "https://github.com/beaverDamDemo/my-cv#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

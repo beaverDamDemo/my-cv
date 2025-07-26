@@ -1,6 +1,6 @@
 # my animated CV
 
-## to run npm install and run http-server -p 4200 or php -S localhost:420
+## to run npm install and run npm run start or php -S localhost:420
 
 ## updating
 
