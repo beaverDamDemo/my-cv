@@ -307,3 +307,19 @@ section:nth-child(2) .col.col-left img {
   opacity: 1;
   transition: opacity 0.1s 0.3s;
 }
+body.font-mode {
+  font-family: "Open Sans", Arial, Helvetica;
+  font-size: 23px;
+}
+
+body.font-mode table {
+  font-size: 0.7em;
+}
+
+body.font-mode #wrapper section {
+  text-transform: none;
+}
+
+body.font-mode main {
+  font-size: 1.1em;
+}

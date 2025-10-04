@@ -1,37 +1,44 @@
-$(".closeButton").on("click", function (e) {
-  $("main").removeClass("active");
-  $(".monster").addClass("active");
-  $(this).addClass("hidden");
-  $("#fontBtn").removeClass("active");
-  $("#marblesWrapper").addClass("hidden");
+(function () {
+  "use strict";
 
-  setTimeout(function () {
-    $(".monster").removeClass("active");
-    $(".replay-envelope").addClass("active");
-    resetMarbles();
-  }, 3300);
-});
+  const $main = $("main");
+  const $fontBtn = $("#fontBtn");
+  const $marblesWrapper = $("#marblesWrapper");
+  const $closeButton = $(".closeButton");
+  const $monster = $(".monster");
+  const $replayEnvelope = $(".replay-envelope");
+  const $wrapperSections = $("#wrapper section");
+  const $body = $("body");
 
-$("#fontBtn").on("click", function (e) {
-  e.preventDefault();
-  $("#fontBtn").addClass("hidden");
-  $("body").css({
-    "font-family": "Open Sans, Arial, Helvetica",
-    "font-size": "23px",
-  });
-  $("body table").css({
-    "font-size": "0.7em",
-  });
-  $("#wrapper section").css({
-    "text-transform": "none",
-  });
-  $("main").css({
-    "font-size": "1.1em",
-  });
-});
+  $closeButton.on("click", function () {
+    $main.removeClass("active");
+    $monster.addClass("active");
+    $(this).addClass("hidden");
+    $fontBtn.removeClass("active");
+    $marblesWrapper.addClass("hidden");
 
-$("#replay-button").on("click", function () {
-  $(".replay-envelope").removeClass("active");
-  $("#marblesWrapper").removeClass("hidden");
-  animateMarbles();
-});
+    setTimeout(showReplayEnvelope, 3300);
+  });
+
+  function showReplayEnvelope() {
+    $monster.removeClass("active");
+    $replayEnvelope.addClass("active");
+    if (typeof resetMarbles === "function") {
+      resetMarbles();
+    }
+  }
+
+  $fontBtn.on("click", function (e) {
+    e.preventDefault();
+    $fontBtn.addClass("hidden");
+    $body.addClass("font-mode");
+  });
+
+  $("#replay-button").on("click", function () {
+    $replayEnvelope.removeClass("active");
+    $marblesWrapper.removeClass("hidden");
+    if (typeof animateMarbles === "function") {
+      animateMarbles();
+    }
+  });
+})();
