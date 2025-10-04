@@ -323,3 +323,42 @@ body.font-mode #wrapper section {
 body.font-mode main {
   font-size: 1.1em;
 }
+
+.replay-envelope {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: cornflowerblue;
+  background-image: url('../images/78786 [Converted]-01.svg');
+  background-repeat: repeat-x;
+  background-size: 100%;
+  background-position: 50% 100%;
+  text-align: center;
+  transform: scale(0);
+  transition: transform 0.18s;
+
+  &.active {
+    transform: scale(1);
+  }
+
+  div:nth-child(3) {
+    margin-top: 144px;
+  }
+
+  button#replay-button {
+    border: none;
+    width: 168px;
+    height: 168px;
+    background: url('../images/10ce78a56be64c4cd48b444279ebb6fa.svg');
+    margin-top: 60px;
+    cursor: pointer;
+
+    &:hover {}
+  }
+
+  & div {
+    margin-top: 20px;
+  }
+}
