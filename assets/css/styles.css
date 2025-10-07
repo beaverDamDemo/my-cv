@@ -13,7 +13,7 @@
   --monster-frame-count: 8;
   --slide-in-duration: 0.7s;
   --slide-in-delay: 1.5s;
-  --fade-in-duration: 1s;
+  --fade-in-duration: 0.4s;
   --close-button-transition: 0.2s;
   --replay-button-hover-duration: 0.3s;
   --last-marble-opacity-delay: 0.3s;
@@ -323,7 +323,7 @@ body.font-mode main {
 }
 
 .replay-envelope {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -331,27 +331,55 @@ body.font-mode main {
   background: rgba(32, 43, 89, 0.75);
   display: none;
   z-index: 999;
+  animation: fadeIn var(--fade-in-duration) ease-out;
+
+  .replay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 960px;
+    height: 960px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .replay-container .link-block {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.4rem 0.8rem;
+    margin: 0.2rem 0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #b4a790;
+  }
+
+  .replay-container .link-block a {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffcc70;
+    text-decoration: none;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    transition: color 0.3s ease, transform 0.2s ease;
+    background: none;
+  }
+
+  .replay-container .link-block a:hover {
+    color: #fff;
+    transform: scale(1.05);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+  }
 }
 
 .replay-envelope.active {
   display: block;
-}
-
-.replay-container {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 960px;
-  height: 960px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
-  animation: fadeIn var(--fade-in-duration) ease-out;
 }
 
 #replay-button {
@@ -373,38 +401,10 @@ body.font-mode main {
   filter: brightness(1.1);
 }
 
-.replay-container .link-block {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 0.4rem 0.8rem;
-  margin: 0.2rem 0;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  color: #b4a790;
-}
-
-.replay-container .link-block a {
-  display: inline-block;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #ffcc70;
-  text-decoration: none;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-  transition: color 0.3s ease, transform 0.2s ease;
-  background: none;
-}
-
-.replay-container .link-block a:hover {
-  color: #fff;
-  transform: scale(1.05);
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: scale(0.95);
+    transform: scale(0.35);
   }
 
   to {
