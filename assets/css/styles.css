@@ -142,7 +142,8 @@ main {
   background: #d6d6d6;
   visibility: hidden;
   max-height: 128px;
-  left: 156px;
+  left: 50%;
+  transform: translateX(-50%);
   transform-origin: center center;
 }
 main.active {
