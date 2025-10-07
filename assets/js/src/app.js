@@ -112,6 +112,15 @@
     }
   };
 
+  window.addEventListener("message", (event) => {
+    /**
+     * !this is used for when hosting this my-cv within iframe in my landing-page
+     */
+    if (event.data.type === "restart") {
+      replay();
+    }
+  });
+
   const $main = $("main");
   const $toggleFontButton = $("#toggle-font-button");
   const $marblesWrapper = $("#marblesWrapper");
@@ -144,7 +153,7 @@
     $body.toggleClass("font-mode");
   });
 
-  $("#replay-button").on("click", function () {
+  function replay() {
     $replayEnvelope.removeClass("active");
     $marblesWrapper.removeClass("hidden");
     $toggleFontButton.removeClass("active hidden");
@@ -152,5 +161,9 @@
     if (typeof animateMarbles === "function") {
       animateMarbles();
     }
+  }
+
+  $("#replay-button").on("click", function () {
+    replay();
   });
 })();
