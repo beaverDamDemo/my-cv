@@ -74,58 +74,38 @@ body {
     background-position: -267px;
   }
 }
-#fontBtn {
+
+:root {
+  --change-font-button-height: 110px;
+  --change-font-button-aspect-ratio: calc(418 / 557);
+}
+
+#change-font-button {
   position: absolute;
-  right: 20px;
-  top: 100px;
+  right: 40px;
+  top: 110px;
   cursor: pointer;
   transform-origin: center bottom;
   transform: translateY(-600px) rotateX(-30deg) scale(0);
   transform-origin: 50% 100%;
   opacity: 0;
+  cursor: pointer;
+  background: url("../images/tinified/change-font-version-1.png");
+  height: var(--change-font-button-height);
+  width: calc(
+    var(--change-font-button-height) * var(--change-font-button-aspect-ratio)
+  );
+  background-size: cover;
+  background-position: center;
+  border: none;
 }
-#fontBtn.active {
+#change-font-button.active {
   animation: slide-in-elliptic-top-fwd 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)
     both 1.5s;
 }
-.fancy-font-btn {
-  background: linear-gradient(135deg, #00f7ff, #a200ff);
-  color: #fff;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 1.2rem;
-  padding: 0.75em 1.5em;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
 
-.fancy-font-btn::after {
-  content: "";
-  position: absolute;
-  top: -100%;
-  left: -100%;
-  width: 300%;
-  height: 300%;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.2) 10%,
-    transparent 80%
-  );
-  transform: scale(0);
-  transition: transform 0.5s ease;
-}
-
-.fancy-font-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-}
-
-.fancy-font-btn:hover::after {
-  transform: scale(1);
+#change-font-button:hover {
+  transform: scale(1.1) rotate(-2deg);
 }
 
 @keyframes slide-in-elliptic-top-fwd {
@@ -355,28 +335,26 @@ body.font-mode main {
   padding: 2rem;
   animation: fadeIn 1s ease-out;
 }
+:root {
+  --button-height: 110px;
+  --aspect-ratio: calc(415 / 404);
+}
 
 #replay-button {
-  background: linear-gradient(135deg, #ff8a00, #e52e71);
-  color: #fff;
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 0.8rem 2.2rem;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
+  background-color: transparent;
+  background-image: url("../images/tinified/replay-version-1.png");
   margin-bottom: 2rem;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  letter-spacing: 1px;
-  white-space: nowrap;
-  text-align: center;
-  display: inline-block;
+  height: var(--button-height);
+  width: calc(var(--button-height) * var(--aspect-ratio));
+  background-size: cover;
+  background-position: center;
+  border: none;
+  cursor: pointer;
 }
 
 #replay-button:hover {
   transform: scale(1.1) rotate(-2deg);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
 }
 
 .replay-container .link-block {
@@ -384,6 +362,7 @@ body.font-mode main {
   padding: 0.4rem 0.8rem;
   margin: 0.2rem 0;
   border-radius: 8px;
+  font-size: 0.9rem;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   text-align: center;
   color: #b4a790;

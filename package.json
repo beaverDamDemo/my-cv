@@ -4,8 +4,9 @@
   "description": "- to update you ll have to manually update the html and take screenshots and paste these screenshots into a single file\r   or just zoom out and take only one screenshot to speed up",
   "main": "index.js",
   "scripts": {
-    "start": "http-server -p 4200",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "vite",
+    "dev": "vite",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,6 @@
   },
   "homepage": "https://github.com/beaverDamDemo/my-cv#readme",
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "vite": "^7.1.9"
   }
 }

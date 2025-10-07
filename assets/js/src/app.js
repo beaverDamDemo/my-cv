@@ -16,7 +16,6 @@
     const bgr = Snap.select("rect#bgr");
     const light1 = Snap.select("#kandelaber #light");
     const light2 = Snap.select("#kandelaber #light-2");
-
     const origColor = bgr.attr("fill");
     const origLightColor = [light1.attr("fill"), light2.attr("fill")];
     const duration = 9000;
@@ -92,7 +91,7 @@
             $("main").addClass("active");
             $(".marble__last").addClass("last-marble-hiding");
             $(".closeButton").removeClass("hidden");
-            $("#fontBtn").addClass("active");
+            $("#change-font-button").addClass("active");
           },
         });
       } else {

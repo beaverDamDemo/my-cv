@@ -2,19 +2,18 @@
   "use strict";
 
   const $main = $("main");
-  const $fontBtn = $("#fontBtn");
+  const $changeFontButton = $("#change-font-button");
   const $marblesWrapper = $("#marblesWrapper");
   const $closeButton = $(".closeButton");
   const $monster = $(".monster");
   const $replayEnvelope = $(".replay-envelope");
-  const $wrapperSections = $("#wrapper section");
   const $body = $("body");
 
   $closeButton.on("click", function () {
     $main.removeClass("active");
     $monster.addClass("active");
     $(this).addClass("hidden");
-    $fontBtn.removeClass("active");
+    $changeFontButton.removeClass("active");
     $marblesWrapper.addClass("hidden");
 
     setTimeout(showReplayEnvelope, 3300);
@@ -28,9 +27,9 @@
     }
   }
 
-  $fontBtn.on("click", function (e) {
+  $changeFontButton.on("click", function (e) {
     e.preventDefault();
-    $fontBtn.addClass("hidden");
+    $changeFontButton.addClass("hidden");
     $body.addClass("font-mode");
   });
 
