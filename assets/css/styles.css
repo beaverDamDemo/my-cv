@@ -76,11 +76,11 @@ body {
 }
 
 :root {
-  --change-font-button-height: 110px;
-  --change-font-button-aspect-ratio: calc(418 / 557);
+  --toggle-font-button-height: 110px;
+  --toggle-font-button-aspect-ratio: calc(418 / 557);
 }
 
-#change-font-button {
+#toggle-font-button {
   position: absolute;
   right: 40px;
   top: 110px;
@@ -91,21 +91,23 @@ body {
   opacity: 0;
   cursor: pointer;
   background: url("../images/tinified/change-font-version-1.png");
-  height: var(--change-font-button-height);
+  height: var(--toggle-font-button-height);
   width: calc(
-    var(--change-font-button-height) * var(--change-font-button-aspect-ratio)
+    var(--toggle-font-button-height) * var(--toggle-font-button-aspect-ratio)
   );
   background-size: cover;
   background-position: center;
   border: none;
 }
-#change-font-button.active {
+#toggle-font-button.active {
   animation: slide-in-elliptic-top-fwd 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)
     both 1.5s;
 }
+#toggle-font-button.selected-option-b {
+}
 
-#change-font-button:hover {
-  transform: scale(1.1) rotate(-2deg);
+#toggle-font-button:hover {
+  filter: brightness(1.1);
 }
 
 @keyframes slide-in-elliptic-top-fwd {
@@ -355,6 +357,7 @@ body.font-mode main {
 
 #replay-button:hover {
   transform: scale(1.1) rotate(-2deg);
+  filter: brightness(1.1);
 }
 
 .replay-container .link-block {

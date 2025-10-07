@@ -1,6 +1,18 @@
 (function () {
   "use strict";
 
+  const TIMING = {
+    bgr: 9000,
+    marbleDrop: 1,
+    marbleSlide: 0.6,
+    marbleSlideDelay: 0.28,
+    marbleBounce: 0.2,
+    marbleFade: 1,
+    lastMarbleScale: 6.25,
+    lastMarbleDuration: 2,
+    closeButtonDelay: 3300,
+  };
+
   const s = Snap("#backgroundImage");
   Snap.load("assets/images/background-01.svg", onSVGLoaded);
 
@@ -18,28 +30,27 @@
     const light2 = Snap.select("#kandelaber #light-2");
     const origColor = bgr.attr("fill");
     const origLightColor = [light1.attr("fill"), light2.attr("fill")];
-    const duration = 9000;
 
-    bgr.animate({ fill: "#333" }, duration);
-    light1.animate({ fill: "#8deff9" }, duration);
-    light2.animate({ fill: "#8deff9" }, duration);
+    bgr.animate({ fill: "#333" }, TIMING.bgr);
+    light1.animate({ fill: "#8deff9" }, TIMING.bgr);
+    light2.animate({ fill: "#8deff9" }, TIMING.bgr);
 
     setTimeout(() => {
-      bgr.animate({ fill: origColor }, duration);
-      light1.animate({ fill: origLightColor[0] }, duration);
-      light2.animate({ fill: origLightColor[1] }, duration);
-    }, duration);
+      bgr.animate({ fill: origColor }, TIMING.bgr);
+      light1.animate({ fill: origLightColor[0] }, TIMING.bgr);
+      light2.animate({ fill: origLightColor[1] }, TIMING.bgr);
+    }, TIMING.bgr);
 
-    setTimeout(startLoop, 2 * duration);
+    setTimeout(startLoop, 2 * TIMING.bgr);
 
     function startLoop() {
       setTimeout(() => {
-        bgr.animate({ fill: "#333" }, duration);
+        bgr.animate({ fill: "#333" }, TIMING.bgr);
         setTimeout(() => {
-          bgr.animate({ fill: origColor }, duration);
-        }, duration);
+          bgr.animate({ fill: origColor }, TIMING.bgr);
+        }, TIMING.bgr);
         startLoop();
-      }, 2 * duration);
+      }, 2 * TIMING.bgr);
     }
   }
 
@@ -71,18 +82,16 @@
       const tl = new TimelineMax();
 
       if (index === $marbles.length - 1) {
-        const scale = 6.25;
-
-        tl.to($this, 1, {
+        tl.to($this, TIMING.marbleDrop, {
           top: "+=652px",
           ease: Bounce.easeOut,
           delay,
-        }).to($this, 2, {
+        }).to($this, TIMING.lastMarbleDuration, {
           css: {
             borderRadius: 0,
             height: "136px",
             backgroundRepeat: "no-repeat",
-            transform: `scale(${scale})`,
+            transform: `scale(${TIMING.lastMarbleScale})`,
             top: "372px",
             left: "+=10%",
             transformOrigin: "50% 50%",
@@ -91,26 +100,26 @@
             $("main").addClass("active");
             $(".marble__last").addClass("last-marble-hiding");
             $(".closeButton").removeClass("hidden");
-            $("#change-font-button").addClass("active");
+            $("#toggle-font-button").addClass("active");
           },
         });
       } else {
-        tl.to($this, 1, {
+        tl.to($this, TIMING.marbleDrop, {
           top: "+=650px",
           ease: Bounce.easeOut,
           delay,
         })
-          .to($this, 0.6, {
+          .to($this, TIMING.marbleSlide, {
             left: "+=305px",
             rotation: "+=255",
             ease: Power1.easeOut,
-            delay: 0.28,
+            delay: TIMING.marbleSlideDelay,
           })
-          .to($this, 0.2, {
+          .to($this, TIMING.marbleBounce, {
             top: "+=105px",
             rotation: "+=45",
           })
-          .to($this, 1, {
+          .to($this, TIMING.marbleFade, {
             ease: Power4.easeIn,
             css: {
               opacity: 0,
@@ -120,4 +129,46 @@
       }
     }
   };
+
+  const $main = $("main");
+  const $toggleFontButton = $("#toggle-font-button");
+  const $marblesWrapper = $("#marblesWrapper");
+  const $closeButton = $(".closeButton");
+  const $monster = $(".monster");
+  const $replayEnvelope = $(".replay-envelope");
+  const $body = $("body");
+
+  $closeButton.on("click", function () {
+    $main.removeClass("active");
+    $monster.addClass("active");
+    $(this).addClass("hidden");
+    $toggleFontButton.removeClass("active");
+    $marblesWrapper.addClass("hidden");
+
+    setTimeout(showReplayEnvelope, TIMING.closeButtonDelay);
+  });
+
+  function showReplayEnvelope() {
+    $monster.removeClass("active");
+    $replayEnvelope.addClass("active");
+    if (typeof resetMarbles === "function") {
+      resetMarbles();
+    }
+  }
+
+  $toggleFontButton.on("click", function (e) {
+    e.preventDefault();
+    $toggleFontButton.toggleClass("selected-option-b");
+    $body.toggleClass("font-mode");
+  });
+
+  $("#replay-button").on("click", function () {
+    $replayEnvelope.removeClass("active");
+    $marblesWrapper.removeClass("hidden");
+    $toggleFontButton.removeClass("active hidden");
+    $body.removeClass("font-mode");
+    if (typeof animateMarbles === "function") {
+      animateMarbles();
+    }
+  });
 })();
