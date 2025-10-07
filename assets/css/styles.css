@@ -2,6 +2,24 @@
   font-family: "ZdenkoFont2";
   src: url("../../assets/fonts/ZdenkoFont2-Regular.otf");
 }
+:root {
+  --button-height: 110px;
+  --aspect-ratio: calc(415 / 404);
+  --toggle-font-button-height: 110px;
+  --toggle-font-button-aspect-ratio: calc(418 / 557);
+
+  --monster-move-duration: 6s;
+  --monster-frame-duration: 0.8s;
+  --monster-frame-count: 8;
+  --slide-in-duration: 0.7s;
+  --slide-in-delay: 1.5s;
+  --fade-in-duration: 1s;
+  --close-button-transition: 0.2s;
+  --replay-button-hover-duration: 0.3s;
+  --last-marble-opacity-delay: 0.3s;
+  --last-marble-opacity-duration: 0.1s;
+}
+
 html,
 body {
   font-family: "ZdenkoFont2", "Open Sans", sans-serif;
@@ -52,10 +70,11 @@ body {
 }
 .monster.active {
   visibility: visible;
-  animation: move_right_an 6s linear 1;
+  animation: move_right_an var(--monster-move-duration) linear 1;
 }
 .monster.active .inner {
-  animation: monster_an 0.8s steps(5) 8;
+  animation: monster_an var(--monster-frame-duration) steps(5)
+    var(--monster-frame-count);
 }
 @keyframes move_right_an {
   to {
@@ -73,11 +92,6 @@ body {
   to {
     background-position: -267px;
   }
-}
-
-:root {
-  --toggle-font-button-height: 110px;
-  --toggle-font-button-aspect-ratio: calc(418 / 557);
 }
 
 #toggle-font-button {
@@ -100,9 +114,10 @@ body {
   border: none;
 }
 #toggle-font-button.active {
-  animation: slide-in-elliptic-top-fwd 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    both 1.5s;
+  animation: slide-in-elliptic-top-fwd var(--slide-in-duration)
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both var(--slide-in-delay);
 }
+
 #toggle-font-button.selected-option-b {
 }
 
@@ -231,12 +246,12 @@ section:nth-child(2) .col.col-left img {
   width: 50px;
   height: 50px;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform var(--close-button-transition);
 }
 .closeButton.hidden {
   visibility: visible;
   transform: scale(0);
-  transition: transform 0.2s;
+  transition: transform var(--close-button-transition);
 }
 .closeButton .inner {
   position: relative;
@@ -287,7 +302,8 @@ section:nth-child(2) .col.col-left img {
 }
 .marble.last-marble-hiding {
   opacity: 1;
-  transition: opacity 0.1s 0.3s;
+  transition: opacity var(--last-marble-opacity-duration)
+    var(--last-marble-opacity-delay);
 }
 body.font-mode {
   font-family: "Open Sans", Arial, Helvetica;
@@ -335,18 +351,15 @@ body.font-mode main {
   align-items: center;
   text-align: center;
   padding: 2rem;
-  animation: fadeIn 1s ease-out;
-}
-:root {
-  --button-height: 110px;
-  --aspect-ratio: calc(415 / 404);
+  animation: fadeIn var(--fade-in-duration) ease-out;
 }
 
 #replay-button {
   background-color: transparent;
   background-image: url("../images/tinified/replay-version-1.png");
   margin-bottom: 2rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform var(--replay-button-hover-duration) ease,
+    box-shadow var(--replay-button-hover-duration) ease;
   height: var(--button-height);
   width: calc(var(--button-height) * var(--aspect-ratio));
   background-size: cover;
