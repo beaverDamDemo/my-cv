@@ -82,6 +82,10 @@
       const tl = new TimelineMax();
 
       if (index === $marbles.length - 1) {
+        const containerWidth = $("#marblesWrapper").width();
+        const marbleWidth = $this.width();
+        const centerX = (containerWidth - marbleWidth) / 2;
+
         tl.to($this, TIMING.marbleDrop, {
           top: "+=652px",
           ease: Bounce.easeOut,
@@ -93,7 +97,7 @@
             backgroundRepeat: "no-repeat",
             transform: `scale(${TIMING.lastMarbleScale})`,
             top: "372px",
-            left: "+=10%",
+            left: `${centerX}px`,
             transformOrigin: "50% 50%",
           },
           onComplete: () => {
@@ -104,28 +108,6 @@
           },
         });
       } else {
-        tl.to($this, TIMING.marbleDrop, {
-          top: "+=650px",
-          ease: Bounce.easeOut,
-          delay,
-        })
-          .to($this, TIMING.marbleSlide, {
-            left: "+=305px",
-            rotation: "+=255",
-            ease: Power1.easeOut,
-            delay: TIMING.marbleSlideDelay,
-          })
-          .to($this, TIMING.marbleBounce, {
-            top: "+=105px",
-            rotation: "+=45",
-          })
-          .to($this, TIMING.marbleFade, {
-            ease: Power4.easeIn,
-            css: {
-              opacity: 0,
-              left: "+=4px",
-            },
-          });
       }
     }
   };
