@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "ZdenkoFont2";
-  src: url("../../assets/fonts/ZdenkoFont2-Regular.otf");
+  font-family: 'ZdenkoFont2';
+  src: url('../../assets/fonts/ZdenkoFont2-Regular.otf');
 }
 :root {
   --button-height: 110px;
@@ -22,7 +22,7 @@
 
 html,
 body {
-  font-family: "ZdenkoFont2", "Open Sans", sans-serif;
+  font-family: 'ZdenkoFont2', 'Open Sans', sans-serif;
 }
 body {
   margin: 0;
@@ -85,7 +85,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: url("../images/monster.png");
+  background-image: url('../images/monster.png');
   background-size: 267px auto;
 }
 @keyframes monster_an {
@@ -104,7 +104,7 @@ body {
   transform-origin: 50% 100%;
   opacity: 0;
   cursor: pointer;
-  background: url("../images/tinified/change-font-version-1.png");
+  background: url('../images/tinified/change-font-version-1.png');
   height: var(--toggle-font-button-height);
   width: calc(
     var(--toggle-font-button-height) * var(--toggle-font-button-aspect-ratio)
@@ -200,7 +200,7 @@ section .col-right span {
   position: relative;
 }
 .col-right .line:after {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   bottom: 0;
@@ -214,7 +214,7 @@ section .col-right span {
   position: relative;
 }
 .col-right .line-red:after {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   bottom: 0;
@@ -261,7 +261,7 @@ section:nth-child(2) .col.col-left img {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-image: url("../images/close-button-png-30237.png");
+  background-image: url('../images/close-button-png-30237.png');
   background-size: 48px 48px;
   background-repeat: no-repeat;
   animation: filter_an 9s infinite;
@@ -297,7 +297,7 @@ section:nth-child(2) .col.col-left img {
   left: 400px;
   width: 134px;
   height: 134px;
-  background-image: url("../images/static-image-small.png");
+  background-image: url('../images/static-image-small.png');
   background-size: 134px auto;
   border-radius: 50%;
 }
@@ -307,7 +307,7 @@ section:nth-child(2) .col.col-left img {
     var(--last-marble-opacity-delay);
 }
 body.font-mode {
-  font-family: "Open Sans", Arial, Helvetica;
+  font-family: 'Open Sans', Arial, Helvetica;
   font-size: 23px;
 }
 
@@ -368,7 +368,9 @@ body.font-mode main {
     color: #ffcc70;
     text-decoration: none;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-    transition: color 0.3s ease, transform 0.2s ease;
+    transition:
+      color 0.3s ease,
+      transform 0.2s ease;
     background: none;
   }
 
@@ -383,11 +385,32 @@ body.font-mode main {
   display: block;
 }
 
+.replay-envelope.active #replay-button {
+  animation: replayButtonEntry 0.5s cubic-bezier(0.23, 1.02, 0.36, 1) both;
+  animation-delay: 0.4s;
+}
+
+@keyframes replayButtonEntry {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(90px);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.18) translateY(-18px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 #replay-button {
   background-color: transparent;
-  background-image: url("../images/tinified/replay-version-1.png");
+  background-image: url('../images/tinified/replay-version-1.png');
   margin-bottom: 2rem;
-  transition: transform var(--replay-button-hover-duration) ease,
+  transition:
+    transform var(--replay-button-hover-duration) ease,
     box-shadow var(--replay-button-hover-duration) ease;
   height: var(--button-height);
   width: calc(var(--button-height) * var(--aspect-ratio));
