@@ -6,7 +6,7 @@
     marbleDrop: 1,
     marbleSlide: 0.6,
     marbleSlideDelay: 0.28,
-    marbleBounce: 0.2,
+    marbleFallDown: 0.3,
     marbleFade: 1,
     lastMarbleScale: 6.25,
     lastMarbleDuration: 2,
@@ -110,21 +110,78 @@
           },
         });
       } else {
-        tl.to($this, TIMING.marbleDrop, {
+        // Split the drop: fast fall to just above ground, then squash, then finish drop with bounce
+        const dropFast = TIMING.marbleDrop * 0.7;
+        const dropBounce = TIMING.marbleDrop * 0.3;
+        tl.to($this, dropFast, {
           top: '+=650px',
-          ease: Bounce.easeOut,
+          ease: Power2.easeIn,
           delay,
         })
+          // SQUASH AND BOUNCE ANIMATION (triggered exactly when marble touches ground)
+          // First squash (on ground)
+          .to($this, 0.12, {
+            scaleX: 1.35,
+            scaleY: 0.7,
+            transformOrigin: '50% 50%',
+            ease: Power1.easeIn,
+          })
+          .to($this, 0.12, {
+            scaleX: 1.0,
+            scaleY: 1.0,
+            transformOrigin: '50% 50%',
+            ease: Power1.easeOut,
+          })
+          // Small bounce up
+          .to($this, 0.18, {
+            top: '-=38px',
+            ease: Power2.easeOut,
+          })
+          // Fall back down
+          .to($this, 0.18, {
+            top: '+=38px',
+            ease: Power2.easeIn,
+          })
+          // Continue with a few more squash bounces (diminishing)
+          .to($this, 0.09, {
+            scaleX: 1.18,
+            scaleY: 0.82,
+            transformOrigin: '50% 50%',
+            ease: Power1.easeIn,
+          })
+          .to($this, 0.09, {
+            scaleX: 1.0,
+            scaleY: 1.0,
+            transformOrigin: '50% 50%',
+            ease: Power1.easeOut,
+          })
+          .to($this, 0.07, {
+            scaleX: 1.08,
+            scaleY: 0.92,
+            transformOrigin: '50% 50%',
+            ease: Power1.easeIn,
+          })
+          .to($this, 0.07, {
+            scaleX: 1.0,
+            scaleY: 1.0,
+            transformOrigin: '50% 50%',
+            ease: Power1.easeOut,
+          })
+          // CONTINUE WITH EXISTING ANIMATION, start 0.3s earlier (overlap)
+          // Slide to the right first
           .to($this, TIMING.marbleSlide, {
             left: '+=305px',
             rotation: '+=255',
             ease: Power1.easeOut,
-            delay: TIMING.marbleSlideDelay,
+            delay: TIMING.marbleSlideDelay - 0.25,
           })
-          .to($this, TIMING.marbleBounce, {
+          // Then fall down after reaching the right position
+          .to($this, TIMING.marbleFallDown, {
             top: '+=105px',
             rotation: '+=45',
+            ease: Power2.easeIn,
           })
+          // Fade out as before
           .to($this, TIMING.marbleFade, {
             ease: Power4.easeIn,
             css: {
